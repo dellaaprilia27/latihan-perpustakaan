@@ -14,7 +14,7 @@ class BukuController extends Controller
     {
         $buku = Buku::all();
         $kategori = Kategoribukurelasi::all();
-        return view('buku.buku',compact('buku','kategori'));
+        return view('buku.buku', compact('buku','kategori'));
     }
 
     public function create()
@@ -22,7 +22,6 @@ class BukuController extends Controller
         $kategori = Kategori::distinct()->get();
         return view('buku.buku_create', compact('kategori'));
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -33,8 +32,10 @@ class BukuController extends Controller
             'kategori_id' => 'required',
         ]);
 
+          // Cari kategori berdasarkan ID
         $kategori = Kategori::find($request->kategori_id);
-
+ 
+        //Tambah buku baru beserta kategori
         $buku = Buku::create([
             'judul' => $request->judul,
             'penulis' => $request->penulis,
@@ -45,5 +46,31 @@ class BukuController extends Controller
         $buku->kategori()->attach($kategori);
 
         return redirect('/buku')->with('success', 'Buku berhasil ditambahkan!');
+    }
+    public function edit($id){
+        $buku = Buku::findOrFail($id);
+        return view ('buku.buku_edit', ['buku'=>$buku]);
+    }
+    public function update(Request $request, $id){
+        $request->validate([
+            'judul'=>'required',
+            'penulis'=>'required',
+            'penerbit'=>'required',
+            'tahun_terbit'=>'required',
+        ]);
+        Buku::find($id)->update([
+            'judul'=>$request->judul,
+            'penulis'=>$request->penulis,
+            'penerbit'=>$request->penerbit,
+            'tahun_terbit'=>$request->tahun_terbit,
+        ]);
+        return redirect('/buku');
+    }
+    public function destroy($id){
+        // Kategori::find($id)->destroy();
+        $buku = Buku::find($id);
+        $buku->delete();
+
+        return redirect('/buku');
     }
 }

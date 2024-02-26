@@ -1,7 +1,7 @@
 @extends('layouts.perpus')
 
 @section('content')
-<a class="btn btn-danger" href="{{route('buku.create')}}">Tambah Data</a>
+<a class="btn btn-primary" href="{{route('buku.create')}}">Tambah Data</a>
 <table class="mx-auto min-w-full border rounded-md overflow-hidden">
     <thead class="bg-gray-100">
         <tr>
@@ -9,7 +9,7 @@
             <th class="py-2 px-4">Penulis</th>
             <th class="py-2 px-4">Penerbit</th>
             <th class="py-2 px-4">Tahun</th>
-            <th class="py-2 px-4">Kategori</th>
+            <th class="py-2 px-4">Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -19,14 +19,16 @@
                 <td class="py-2 px-4">{{ $b->penulis }}</td>
                 <td class="py-2 px-4">{{ $b->penerbit }}</td>
                 <td class="py-2 px-4">{{ $b->tahun_terbit }}</td>
+     
                 <td class="py-2 px-4">
-                    @foreach ($b->kategoribukurelasi as $kategoribuku)
-                        @if ($kategoribuku->kategori)
-                            {{ $kategoribuku->kategori->nama_kategori }}<br>
-                        @endif
-                    @endforeach
+                    <form method="post" action="{{route('buku.destroy',$b->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <a class="btn btn-warning" href="{{route('buku.edit', $b->id)}}">Edit</a>
+                    </form>
                 </td>
-            </tr>
+                
         @endforeach
     </tbody>
 </table>

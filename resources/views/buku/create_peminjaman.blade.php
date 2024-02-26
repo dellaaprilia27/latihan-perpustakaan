@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.perpus')
 
 @section('content')
 <div class="py-12">

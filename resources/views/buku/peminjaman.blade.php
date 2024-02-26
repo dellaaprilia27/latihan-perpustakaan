@@ -2,12 +2,16 @@
 
 @section('content')
 <div class="py-12">
+   
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
-                <div class="mb-4">
-                    <a href="{{ route('peminjaman.tambah') }}" class="bg-blue-500 hover:bg-blue-700 text-black border font-bold py-2 px-4 rounded">
-                        + Tambah Data Peminjaman
+
+                <div class="mb-4 d-flex justify-content-between">
+                    <a class="btn btn-primary" href="{{route('peminjaman.tambah')}}">Tambah Data Peminjaman</a>
+                    <a href="{{route('print')}}" class="btn btn-primary">
+                        <i class="fa fa-download"></i> Ekspor PDF </a>
+                   
                     </a>
                 </div>
 
