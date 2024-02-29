@@ -2,9 +2,10 @@
 
 @section('content')
 <a class="btn btn-primary" href="{{route('buku.create')}}">Tambah Data</a>
-<table class="mx-auto min-w-full border rounded-md overflow-hidden">
+<table class="table table-bordered mx-auto min-w-full border rounded-md overflow-hidden">
     <thead class="bg-gray-100">
         <tr>
+            <th class="py-2 px-4">Foto</th>
             <th class="py-2 px-4">Judul</th>
             <th class="py-2 px-4">Penulis</th>
             <th class="py-2 px-4">Penerbit</th>
@@ -15,6 +16,9 @@
     <tbody>
         @foreach ($buku as $b)
             <tr class="hover:bg-gray-50">
+                <td>
+                    <img src="{{ asset('storage/'.$b->foto) }}" alt="Foto Buku" width="100">
+                </td>       
                 <td class="py-2 px-4">{{ $b->judul }}</td>
                 <td class="py-2 px-4">{{ $b->penulis }}</td>
                 <td class="py-2 px-4">{{ $b->penerbit }}</td>
