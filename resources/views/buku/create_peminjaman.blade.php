@@ -7,6 +7,10 @@
             <form action="{{ route('peminjaman.store') }}" method="post">
                 @csrf
 
+                <div class="card-header">
+                    <h1 class="h3 text-2xl font-semibold mb-4">Formulir Input Peminjaman</h1>
+                </div>
+
                 <div class="mb-3">
                     <label for="user_id" class="block text-sm font-medium text-gray-700">Nama Peminjam:</label>
                     <select name="user_id" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -35,9 +39,7 @@
                     <input type="date" required name="tanggal_pengembalian" id="tanggal_pengembalian" class="mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
                 </div>
                 <br>
-                <button type="submit" class="bg-gray-500 hover:bg-blue-700 text-black border font-bold py-2 px-4 rounded">
-                    Simpan
-                </button>
+                <button type="submit" class="btn btn-success">Simpan</button>
             </form>
         </div>
     </div>

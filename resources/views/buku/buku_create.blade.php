@@ -19,6 +19,10 @@
                                             enctype="multipart/form-data">
                                             @csrf
 
+                                            <div class="card-header">
+                                                <h1 class="h3 text-2xl font-semibold mb-4">Formulir Input Buku</h1>
+                                            </div>
+
                                             <div class="mb-4">
                                                 <label for="judul"
                                                     class="block text-sm font-semibold mb-2">Judul:</label>
@@ -66,8 +70,7 @@
                                             </div>
 
 
-                                            <button type="submit"
-                                                class="bg-blue-500 text-black border py-2 px-4 rounded">Simpan</button>
+                                            <button type="submit" class="btn btn-success">Simpan</button>
                                         </form>
                                     </div>
                                 </div>

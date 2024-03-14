@@ -21,7 +21,7 @@
                                 <label for="nama_kategori" class="form-label">Nama Kategori:</label>
                                 <input type="text" name="nama_kategori" class="form-control" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
                         </form>
                     </div>
                 </div>

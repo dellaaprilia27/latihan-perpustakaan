@@ -3,13 +3,13 @@
 @section('content')
 <a class="btn btn-primary" href="{{route('buku.create')}}">Tambah Data</a>
 <table class="table table-bordered mx-auto min-w-full border rounded-md overflow-hidden">
-    <thead class="bg-gray-100">
+        <thead class="bg-primary text-white">
         <tr>
             <th class="py-2 px-4">Foto</th>
             <th class="py-2 px-4">Judul</th>
             <th class="py-2 px-4">Penulis</th>
             <th class="py-2 px-4">Penerbit</th>
-            <th class="py-2 px-4">Tahun</th>
+            <th class="py-2 px-4">Tahun Terbit</th>
             <th class="py-2 px-4">Aksi</th>
         </tr>
     </thead>
@@ -28,7 +28,7 @@
                     <form method="post" action="{{route('buku.destroy',$b->id)}}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                         <a class="btn btn-warning" href="{{route('buku.edit', $b->id)}}">Edit</a>
                     </form>
                 </td>

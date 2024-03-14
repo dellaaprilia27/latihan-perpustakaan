@@ -9,14 +9,14 @@
 
                 <div class="mb-4 d-flex justify-content-between">
                     <a class="btn btn-primary" href="{{route('peminjaman.tambah')}}">Tambah Data Peminjaman</a>
-                    <a href="{{route('print')}}" class="btn btn-primary">
+                    <a href="{{route('print')}}" class="btn btn-success">
                         <i class="fa fa-download"></i> Ekspor PDF </a>
                    
                     </a>
                 </div>
 
                 <table class="table-auto w-full border-collapse border border-gray-400">
-                    <thead>
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th class="px-4 py-2 border">Nama Peminjam</th>
                             <th class="px-4 py-2 border">Buku yang Dipinjam</th>

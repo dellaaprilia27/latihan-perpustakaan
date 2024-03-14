@@ -1,4 +1,4 @@
-@extends('layouts.perpus')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
