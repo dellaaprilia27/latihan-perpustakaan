@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\PeminjamanController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,7 @@ Route::get('/buku/detail{id}', [BukuController::class, 'detail'])->name('detail'
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    
+
     Route::get('/kategori', [KategoriController::class, 'index']);
     Route::get('/kategori/tambah', [KategoriController::class, 'create'])->name('kategori.create');
     Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
@@ -37,7 +38,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/buku/tambah', [BukuController::class, 'create'])->name('buku.create');
     Route::post('/buku/store', [BukuController::class, 'store'])->name('buku.store');
     Route::delete('/buku/hapus/{id}', [BukuController::class, 'destroy'])->name('buku.destroy');
-    Route::patch('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
+    Route::put('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
     Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku.edit');
     Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
     Route::get('/peminjaman/tambah', [PeminjamanController::class, 'tambahPeminjaman'])->name('peminjaman.tambah');
