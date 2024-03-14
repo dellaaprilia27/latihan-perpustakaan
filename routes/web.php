@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -45,6 +46,28 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/peminjaman/store', [PeminjamanController::class, 'storePeminjaman'])->name('peminjaman.store');
     Route::post('/peminjaman/selesai/{id}', [PeminjamanController::class, 'kembalikanBuku'])->name('peminjaman.kembalikan');
     Route::get('/report', [PeminjamanController::class, 'print'])->name('print');
+    Route::get('/user', [UserController::class, 'index']);
+});
+Route::middleware(['auth', 'role:petugas'])->group(function () {
+
+    Route::get('/kategori', [KategoriController::class, 'index']);
+    Route::get('/kategori/tambah', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::delete('/kategori/hapus/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+    Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::patch('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
+    Route::get('/buku/tambah', [BukuController::class, 'create'])->name('buku.create');
+    Route::post('/buku/store', [BukuController::class, 'store'])->name('buku.store');
+    Route::delete('/buku/hapus/{id}', [BukuController::class, 'destroy'])->name('buku.destroy');
+    Route::put('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
+    Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku.edit');
+    Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
+    Route::get('/peminjaman/tambah', [PeminjamanController::class, 'tambahPeminjaman'])->name('peminjaman.tambah');
+    Route::post('/peminjaman/store', [PeminjamanController::class, 'storePeminjaman'])->name('peminjaman.store');
+    Route::post('/peminjaman/selesai/{id}', [PeminjamanController::class, 'kembalikanBuku'])->name('peminjaman.kembalikan');
+    Route::get('/report', [PeminjamanController::class, 'print'])->name('print');
+    
 });
 
 //user

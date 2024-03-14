@@ -47,6 +47,38 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            @role('petugas')
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+                
+          
+           
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Perpustakaan
+            </div>
+
+           
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url ('kategori')}}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Data Kategori</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url ('buku')}}">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Data Buku</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url ('peminjaman')}}">
+                    <i class="fas fa-fw fa-bookmark"></i>
+                    <span>Data Peminjaman</span></a>
+            </li>
+            @endrole
             @role('admin')
 
             <!-- Divider -->
@@ -77,6 +109,11 @@
                 <a class="nav-link" href="{{url ('peminjaman')}}">
                     <i class="fas fa-fw fa-bookmark"></i>
                     <span>Data Peminjaman</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url ('user')}}">
+                    <i class="fas fa-fw fa-person"></i>
+                    <span>Data User</span></a>
             </li>
             @endrole
 
@@ -326,8 +363,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                       
                     </div>
 
                     @yield('content')
