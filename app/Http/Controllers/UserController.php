@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $role = Role::all();
+        return view('user.user_create',compact('role'));
     }
 
     /**
@@ -37,7 +38,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+            'role' => 'required|array',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        $user->assignRole($request->role);
+
+        return redirect()->route('user.index')->with('success', 'user berhasil ditambahkan');
+
     }
 
     /**
@@ -59,7 +76,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('user.user_edit', compact('user', 'roles'));;
     }
 
     /**
@@ -71,7 +90,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $users = User::findOrFail($id);
+        // $roles = Role::all();
+        $users->update($request->all());
+        $users->syncRoles($request->roles);
+
+        return redirect('/user');
     }
 
     /**
@@ -82,6 +106,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/user');
     }
 }

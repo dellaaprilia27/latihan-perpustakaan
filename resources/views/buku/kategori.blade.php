@@ -1,11 +1,13 @@
 @extends('layouts.perpus')
 
 @section('content')
-<a class="btn btn-primary" href="{{route('kategori.create')}}">Tambah Kategori</a>
+
+<a class="btn btn-primary" href="{{route('kategori.create')}}">Tambah Data Kategori</a>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-
+        <div class="col-md-2">
+        </a>
+        </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,9 +16,9 @@
                         </div>
                     @endif
     
-                    <table class="table table-bordered">
-                        <tr>
-                                <thead class="col-6 bg-primary text-white">
+                    <table class="table-auto w-full border-collapse border border-gray-400">
+                        <thead class="bg-primary text-white">
+                            <tr>
                             <th class="px-4 py-2">Nama Kategori</th>
                             <th class="col-1 px-4 py-2">Aksi</th>
                         </tr></thead>
@@ -28,7 +30,7 @@
                                         <form method="post" action="{{route('kategori.destroy',$k->id)}}">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger"> Hapus</button>
                                             
                                             <a class="btn btn-warning" href="{{route('kategori.edit', $k->id)}}">Edit</a>
                                         </form>

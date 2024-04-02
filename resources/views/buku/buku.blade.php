@@ -1,9 +1,10 @@
 @extends('layouts.perpus')
 
 @section('content')
-<a class="btn btn-primary" href="{{route('buku.create')}}">Tambah Data</a>
-<table class="table table-bordered mx-auto min-w-full border rounded-md overflow-hidden">
-        <thead class="bg-primary text-white">
+
+<a class="btn btn-primary" href="{{route('buku.create')}}">Tambah Data Buku</a>
+<table class="table-auto w-full border-collapse border border-gray-400">
+    <thead class="bg-primary text-white">
         <tr>
             <th class="py-2 px-4">Foto</th>
             <th class="py-2 px-4">Judul</th>
@@ -28,7 +29,7 @@
                     <form method="post" action="{{route('buku.destroy',$b->id)}}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                         <a class="btn btn-warning" href="{{route('buku.edit', $b->id)}}">Edit</a>
                     </form>
                 </td>
