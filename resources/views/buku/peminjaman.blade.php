@@ -57,11 +57,11 @@
                                             <a href="{{route('peminjaman.denda',$p->id)}}" class="btn btn-danger">
                                                 Bayar Denda
                                             </a>
-                                            @else($p->status === 'Dikembalikan') </form>
+                                            @else($p->status === 'Dikembalikan') 
                                             -
                                     @endif
                                        
-                                    
+                                        </form>
                                 </td>
                             </tr>
                         @empty
