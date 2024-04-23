@@ -32,9 +32,11 @@
                             <tr>
                                 <td class="px-4 py-2 border">{{ $p->user->name }}</td>
                                 <td class="px-4 py-2 border">{{ $p->buku->judul }}</td>
-                                <td class="px-4 py-2 border">{{ $p->tanggal_peminjaman }}</td>
-                                <td class="px-4 py-2 border">{{ $p->tanggal_pengembalian }}</td>
-                                <td class="px-4 py-2 border">{{ $p->denda }}</td>
+                                <td class="px-4 py-2 border">{{ \Carbon\Carbon::parse($p->tanggal_peminjaman)->format('d-M-Y') }}</td>
+                                <td class="px-4 py-2 border">{{ $p->tanggal_pengembalian ? \Carbon\Carbon::parse($p->tanggal_pengembalian)->format('d-M-Y') : 'Belum di kembalikan'}}</td>
+                                <td class="px-4 py-2 border">{{ $p->denda ? \Carbon\Carbon::parse($p->denda)->format('d-M-Y') : ''}}</td>
+
+
                                 <td class="px-4 py-2 border">
                                     @if($p->status === 'Dipinjam')
                                         <span class="badge bg-warning">{{ $p->status }}</span>
@@ -51,10 +53,15 @@
                                             <button type="submit" class="btn btn-primary">
                                                 Kembalikan
                                             </button>
-                                        </form>
-                                    @else
-                                        -
+                                            @elseif($p->status === 'Denda')
+                                            <a href="{{route('peminjaman.denda',$p->id)}}" class="btn btn-danger">
+                                                Bayar Denda
+                                            </a>
+                                            @else($p->status === 'Dikembalikan') </form>
+                                            -
                                     @endif
+                                       
+                                    
                                 </td>
                             </tr>
                         @empty
